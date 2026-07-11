@@ -113,6 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/shaurya_pratap/projects/raw-multiplayer-platformer/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -143,17 +144,56 @@ my_server/fast:
 .PHONY : my_server/fast
 
 #=============================================================================
-# Target rules for targets named my_client
+# Target rules for targets named game
 
 # Build rule for target.
-my_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_client
-.PHONY : my_client
+game: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game
+.PHONY : game
 
 # fast build rule for target.
-my_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_client.dir/build.make CMakeFiles/my_client.dir/build
-.PHONY : my_client/fast
+game/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/build
+.PHONY : game/fast
+
+#=============================================================================
+# Target rules for targets named SDL3-shared
+
+# Build rule for target.
+SDL3-shared: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL3-shared
+.PHONY : SDL3-shared
+
+# fast build rule for target.
+SDL3-shared/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/build.make _deps/sdl3-build/CMakeFiles/SDL3-shared.dir/build
+.PHONY : SDL3-shared/fast
+
+#=============================================================================
+# Target rules for targets named SDL3_test
+
+# Build rule for target.
+SDL3_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL3_test
+.PHONY : SDL3_test
+
+# fast build rule for target.
+SDL3_test/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/sdl3-build/CMakeFiles/SDL3_test.dir/build.make _deps/sdl3-build/CMakeFiles/SDL3_test.dir/build
+.PHONY : SDL3_test/fast
+
+#=============================================================================
+# Target rules for targets named SDL_uclibc
+
+# Build rule for target.
+SDL_uclibc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL_uclibc
+.PHONY : SDL_uclibc
+
+# fast build rule for target.
+SDL_uclibc/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/build.make _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/build
+.PHONY : SDL_uclibc/fast
 
 libs/network/src/network.o: libs/network/src/network.c.o
 .PHONY : libs/network/src/network.o
@@ -179,29 +219,29 @@ libs/network/src/network.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/network_engine.dir/build.make CMakeFiles/network_engine.dir/libs/network/src/network.c.s
 .PHONY : libs/network/src/network.c.s
 
-src/client.o: src/client.c.o
-.PHONY : src/client.o
+src/game.o: src/game.c.o
+.PHONY : src/game.o
 
 # target to build an object file
-src/client.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_client.dir/build.make CMakeFiles/my_client.dir/src/client.c.o
-.PHONY : src/client.c.o
+src/game.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/game.c.o
+.PHONY : src/game.c.o
 
-src/client.i: src/client.c.i
-.PHONY : src/client.i
+src/game.i: src/game.c.i
+.PHONY : src/game.i
 
 # target to preprocess a source file
-src/client.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_client.dir/build.make CMakeFiles/my_client.dir/src/client.c.i
-.PHONY : src/client.c.i
+src/game.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/game.c.i
+.PHONY : src/game.c.i
 
-src/client.s: src/client.c.s
-.PHONY : src/client.s
+src/game.s: src/game.c.s
+.PHONY : src/game.s
 
 # target to generate assembly for a file
-src/client.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_client.dir/build.make CMakeFiles/my_client.dir/src/client.c.s
-.PHONY : src/client.c.s
+src/game.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/game.c.s
+.PHONY : src/game.c.s
 
 src/server.o: src/server.c.o
 .PHONY : src/server.o
@@ -235,15 +275,18 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... my_client"
+	@echo "... SDL3-shared"
+	@echo "... SDL3_test"
+	@echo "... SDL_uclibc"
+	@echo "... game"
 	@echo "... my_server"
 	@echo "... network_engine"
 	@echo "... libs/network/src/network.o"
 	@echo "... libs/network/src/network.i"
 	@echo "... libs/network/src/network.s"
-	@echo "... src/client.o"
-	@echo "... src/client.i"
-	@echo "... src/client.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
 	@echo "... src/server.o"
 	@echo "... src/server.i"
 	@echo "... src/server.s"
@@ -258,6 +301,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/shaurya_pratap/projects/raw-multiplayer-platformer/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
