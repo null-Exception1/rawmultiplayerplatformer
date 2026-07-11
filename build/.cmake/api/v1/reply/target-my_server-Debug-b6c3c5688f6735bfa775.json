@@ -42,6 +42,9 @@
 			"compileCommandFragments" : 
 			[
 				{
+					"fragment" : "-g"
+				},
+				{
 					"fragment" : "-std=gnu11"
 				}
 			],
@@ -49,7 +52,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/shaurya_pratap/projects/raw-http-c/libs/network/include"
+					"path" : "/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include"
 				}
 			],
 			"language" : "C",
@@ -79,6 +82,10 @@
 	{
 		"commandFragments" : 
 		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
 			{
 				"fragment" : "",
 				"role" : "flags"

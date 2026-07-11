@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/shaurya_pratap/projects/raw-http-c/libs/network/src/network.c" "CMakeFiles/network_engine.dir/libs/network/src/network.c.o" "gcc" "CMakeFiles/network_engine.dir/libs/network/src/network.c.o.d"
+  "/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/src/network.c" "CMakeFiles/network_engine.dir/libs/network/src/network.c.o" "gcc" "CMakeFiles/network_engine.dir/libs/network/src/network.c.o.d"
   )
 
 # Targets to which this target links.

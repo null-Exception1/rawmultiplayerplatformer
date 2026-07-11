@@ -4,7 +4,7 @@
 # compile C with /usr/bin/clang
 C_DEFINES = 
 
-C_INCLUDES = -I/home/shaurya_pratap/projects/raw-http-c/libs/network/include
+C_INCLUDES = -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include
 
-C_FLAGS = -std=gnu11
+C_FLAGS = -g -std=gnu11
 

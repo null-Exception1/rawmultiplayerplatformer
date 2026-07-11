@@ -1,17 +1,17 @@
 [
 {
-  "directory": "/home/shaurya_pratap/projects/raw-http-c/build",
-  "command": "/usr/bin/cc  -I/home/shaurya_pratap/projects/raw-http-c/libs/network/include -g -std=gnu11 -o CMakeFiles/network_engine.dir/libs/network/src/network.c.o -c /home/shaurya_pratap/projects/raw-http-c/libs/network/src/network.c",
-  "file": "/home/shaurya_pratap/projects/raw-http-c/libs/network/src/network.c"
+  "directory": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
+  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include -g -std=gnu11 -o CMakeFiles/network_engine.dir/libs/network/src/network.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/src/network.c",
+  "file": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/src/network.c"
 },
 {
-  "directory": "/home/shaurya_pratap/projects/raw-http-c/build",
-  "command": "/usr/bin/cc  -I/home/shaurya_pratap/projects/raw-http-c/libs/network/include -g -std=gnu11 -o CMakeFiles/my_server.dir/src/server.c.o -c /home/shaurya_pratap/projects/raw-http-c/src/server.c",
-  "file": "/home/shaurya_pratap/projects/raw-http-c/src/server.c"
+  "directory": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
+  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include -g -std=gnu11 -o CMakeFiles/my_server.dir/src/server.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/src/server.c",
+  "file": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/src/server.c"
 },
 {
-  "directory": "/home/shaurya_pratap/projects/raw-http-c/build",
-  "command": "/usr/bin/cc  -I/home/shaurya_pratap/projects/raw-http-c/libs/network/include -g -std=gnu11 -o CMakeFiles/my_client.dir/src/client.c.o -c /home/shaurya_pratap/projects/raw-http-c/src/client.c",
-  "file": "/home/shaurya_pratap/projects/raw-http-c/src/client.c"
+  "directory": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
+  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include -g -std=gnu11 -o CMakeFiles/my_client.dir/src/client.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/src/client.c",
+  "file": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/src/client.c"
 }
 ]

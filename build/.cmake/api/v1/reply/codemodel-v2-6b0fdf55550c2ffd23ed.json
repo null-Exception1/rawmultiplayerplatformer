@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.15"
@@ -21,7 +21,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -43,21 +43,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "my_client::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-my_client-378f441f7ef10457aa2f.json",
+					"jsonFile" : "target-my_client-Debug-4f018d5b01ba7a047287.json",
 					"name" : "my_client",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "my_server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-my_server-66909672896245410b96.json",
+					"jsonFile" : "target-my_server-Debug-b6c3c5688f6735bfa775.json",
 					"name" : "my_server",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "network_engine::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-network_engine-f7fbd956312526fd61d3.json",
+					"jsonFile" : "target-network_engine-Debug-7bee979bac784dd69107.json",
 					"name" : "network_engine",
 					"projectIndex" : 0
 				}
@@ -67,8 +67,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/shaurya_pratap/projects/raw-http-c/build",
-		"source" : "/home/shaurya_pratap/projects/raw-http-c"
+		"build" : "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
+		"source" : "/home/shaurya_pratap/projects/raw-multiplayer-platformer"
 	},
 	"version" : 
 	{

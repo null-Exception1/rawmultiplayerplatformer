@@ -1,1 +1,1 @@
-/usr/bin/clang CMakeFiles/my_client.dir/src/client.c.o -o my_client  libnetwork_engine.a 
+/usr/bin/clang -g CMakeFiles/my_client.dir/src/client.c.o -o my_client  libnetwork_engine.a 

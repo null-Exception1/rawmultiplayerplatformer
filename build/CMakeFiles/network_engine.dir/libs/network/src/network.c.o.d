@@ -1,6 +1,6 @@
 CMakeFiles/network_engine.dir/libs/network/src/network.c.o: \
-  /home/shaurya_pratap/projects/raw-http-c/libs/network/src/network.c \
-  /home/shaurya_pratap/projects/raw-http-c/libs/network/include/network.h \
+  /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/src/network.c \
+  /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include/network.h \
   /usr/include/arpa/inet.h /usr/include/features.h \
   /usr/include/features-time64.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \

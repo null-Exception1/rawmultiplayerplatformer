@@ -39,6 +39,7 @@ int find_addr_client(struct addrinfo *res, struct addrinfo **p,
     printf("We got an address!\n");
     return sockfd;
   }
+  return -1;
 }
 
 int find_addr_server(struct addrinfo *res, struct addrinfo **p) {
@@ -64,4 +65,5 @@ int find_addr_server(struct addrinfo *res, struct addrinfo **p) {
     printf("We got an address!\n");
     return sockfd;
   }
+  return -1;
 }

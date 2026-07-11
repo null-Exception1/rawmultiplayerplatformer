@@ -1,5 +1,5 @@
 CMakeFiles/my_client.dir/src/client.c.o: \
-  /home/shaurya_pratap/projects/raw-http-c/src/client.c \
+  /home/shaurya_pratap/projects/raw-multiplayer-platformer/src/client.c \
   /usr/include/arpa/inet.h /usr/include/features.h \
   /usr/include/features-time64.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -53,7 +53,7 @@ CMakeFiles/my_client.dir/src/client.c.o: \
   /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
   /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/netdb.h \
   /usr/include/rpc/netdb.h /usr/include/x86_64-linux-gnu/bits/netdb.h \
-  /home/shaurya_pratap/projects/raw-http-c/libs/network/include/network.h \
+  /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include/network.h \
   /usr/include/x86_64-linux-gnu/sys/wait.h /usr/include/signal.h \
   /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
   /usr/include/x86_64-linux-gnu/bits/signum-arch.h \

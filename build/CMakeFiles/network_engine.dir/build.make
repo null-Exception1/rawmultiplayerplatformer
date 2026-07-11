@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shaurya_pratap/projects/raw-http-c
+CMAKE_SOURCE_DIR = /home/shaurya_pratap/projects/raw-multiplayer-platformer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shaurya_pratap/projects/raw-http-c/build
+CMAKE_BINARY_DIR = /home/shaurya_pratap/projects/raw-multiplayer-platformer/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/network_engine.dir/depend.make
@@ -72,16 +72,16 @@ include CMakeFiles/network_engine.dir/flags.make
 CMakeFiles/network_engine.dir/libs/network/src/network.c.o: CMakeFiles/network_engine.dir/flags.make
 CMakeFiles/network_engine.dir/libs/network/src/network.c.o: ../libs/network/src/network.c
 CMakeFiles/network_engine.dir/libs/network/src/network.c.o: CMakeFiles/network_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shaurya_pratap/projects/raw-http-c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/network_engine.dir/libs/network/src/network.c.o"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/network_engine.dir/libs/network/src/network.c.o -MF CMakeFiles/network_engine.dir/libs/network/src/network.c.o.d -o CMakeFiles/network_engine.dir/libs/network/src/network.c.o -c /home/shaurya_pratap/projects/raw-http-c/libs/network/src/network.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/network_engine.dir/libs/network/src/network.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/network_engine.dir/libs/network/src/network.c.o -MF CMakeFiles/network_engine.dir/libs/network/src/network.c.o.d -o CMakeFiles/network_engine.dir/libs/network/src/network.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/src/network.c
 
 CMakeFiles/network_engine.dir/libs/network/src/network.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/network_engine.dir/libs/network/src/network.c.i"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/shaurya_pratap/projects/raw-http-c/libs/network/src/network.c > CMakeFiles/network_engine.dir/libs/network/src/network.c.i
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/src/network.c > CMakeFiles/network_engine.dir/libs/network/src/network.c.i
 
 CMakeFiles/network_engine.dir/libs/network/src/network.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/network_engine.dir/libs/network/src/network.c.s"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/shaurya_pratap/projects/raw-http-c/libs/network/src/network.c -o CMakeFiles/network_engine.dir/libs/network/src/network.c.s
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/src/network.c -o CMakeFiles/network_engine.dir/libs/network/src/network.c.s
 
 # Object files for target network_engine
 network_engine_OBJECTS = \
@@ -93,7 +93,7 @@ network_engine_EXTERNAL_OBJECTS =
 libnetwork_engine.a: CMakeFiles/network_engine.dir/libs/network/src/network.c.o
 libnetwork_engine.a: CMakeFiles/network_engine.dir/build.make
 libnetwork_engine.a: CMakeFiles/network_engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shaurya_pratap/projects/raw-http-c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libnetwork_engine.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libnetwork_engine.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/network_engine.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/network_engine.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/network_engine.dir/clean:
 .PHONY : CMakeFiles/network_engine.dir/clean
 
 CMakeFiles/network_engine.dir/depend:
-	cd /home/shaurya_pratap/projects/raw-http-c/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shaurya_pratap/projects/raw-http-c /home/shaurya_pratap/projects/raw-http-c /home/shaurya_pratap/projects/raw-http-c/build /home/shaurya_pratap/projects/raw-http-c/build /home/shaurya_pratap/projects/raw-http-c/build/CMakeFiles/network_engine.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shaurya_pratap/projects/raw-multiplayer-platformer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shaurya_pratap/projects/raw-multiplayer-platformer /home/shaurya_pratap/projects/raw-multiplayer-platformer /home/shaurya_pratap/projects/raw-multiplayer-platformer/build /home/shaurya_pratap/projects/raw-multiplayer-platformer/build /home/shaurya_pratap/projects/raw-multiplayer-platformer/build/CMakeFiles/network_engine.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/network_engine.dir/depend
 
