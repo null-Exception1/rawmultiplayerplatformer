@@ -93,6 +93,7 @@ int main(int argc, char *argv[]) {
     }
 
     yvel += g;
+
     xvel *= 0.90;
     yvel *= 0.90;
 
