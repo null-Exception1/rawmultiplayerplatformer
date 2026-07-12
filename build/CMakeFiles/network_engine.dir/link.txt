@@ -1,2 +1,0 @@
-/usr/bin/llvm-ar qc libnetwork_engine.a CMakeFiles/network_engine.dir/libs/network/src/network.c.o
-/usr/bin/llvm-ranlib libnetwork_engine.a

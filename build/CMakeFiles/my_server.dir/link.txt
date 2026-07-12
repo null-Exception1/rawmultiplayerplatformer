@@ -1,1 +1,0 @@
-/usr/bin/clang -g CMakeFiles/my_server.dir/src/server.c.o -o my_server  libnetwork_engine.a 
