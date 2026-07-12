@@ -1,3 +1,4 @@
+#include "SDL3/SDL_scancode.h"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_keyboard.h>
 #include <SDL3/SDL_keycode.h>
@@ -11,8 +12,5 @@ void handle_keyboard_events_player(const _Bool *keystate, float *xvel,
   }
   if (keystate[SDL_SCANCODE_S]) {
     *yvel += 1;
-  }
-  if (keystate[SDL_SCANCODE_W]) {
-    *yvel -= 1;
   }
 }
