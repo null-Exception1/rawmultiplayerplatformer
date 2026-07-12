@@ -31,5 +31,23 @@ target_link_libraries(my_server PRIVATE network_engine)
 add_executable(game
     src/game.c
 )
-target_link_libraries(game PRIVATE SDL3::SDL3)
-target_link_libraries(game PRIVATE network_engine)
+target_include_directories(game PUBLIC libs/game_engine/include)
+
+# for game
+add_library(physics_engine
+    libs/game_engine/src/physics.c
+)
+add_library(keyboard
+    libs/game_engine/src/keyboard.c
+)
+add_library(rendering
+    libs/game_engine/src/rendering.c
+)
+
+target_link_libraries(rendering PRIVATE SDL3::SDL3)
+target_link_libraries(keyboard PRIVATE SDL3::SDL3)
+target_include_directories(physics_engine PUBLIC libs/game_engine/include)
+target_include_directories(keyboard PUBLIC libs/game_engine/include)
+target_include_directories(rendering PUBLIC libs/game_engine/include)
+
+target_link_libraries(game PRIVATE SDL3::SDL3 physics_engine network_engine keyboard rendering)

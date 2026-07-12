@@ -11,7 +11,22 @@
 },
 {
   "directory": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
-  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-build/include-revision -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-src/include -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include -g -std=gnu11 -o CMakeFiles/game.dir/src/game.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/src/game.c",
+  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/include -g -std=gnu11 -o CMakeFiles/physics_engine.dir/libs/game_engine/src/physics.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/src/physics.c",
+  "file": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/src/physics.c"
+},
+{
+  "directory": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
+  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/include -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-build/include-revision -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-src/include -g -std=gnu11 -o CMakeFiles/keyboard.dir/libs/game_engine/src/keyboard.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/src/keyboard.c",
+  "file": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/src/keyboard.c"
+},
+{
+  "directory": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
+  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/include -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-build/include-revision -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-src/include -g -std=gnu11 -o CMakeFiles/rendering.dir/libs/game_engine/src/rendering.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/src/rendering.c",
+  "file": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/src/rendering.c"
+},
+{
+  "directory": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/build",
+  "command": "/usr/bin/clang  -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/game_engine/include -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-build/include-revision -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/build/_deps/sdl3-src/include -I/home/shaurya_pratap/projects/raw-multiplayer-platformer/libs/network/include -g -std=gnu11 -o CMakeFiles/game.dir/src/game.c.o -c /home/shaurya_pratap/projects/raw-multiplayer-platformer/src/game.c",
   "file": "/home/shaurya_pratap/projects/raw-multiplayer-platformer/src/game.c"
 },
 {

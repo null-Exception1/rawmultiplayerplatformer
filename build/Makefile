@@ -157,6 +157,45 @@ game/fast:
 .PHONY : game/fast
 
 #=============================================================================
+# Target rules for targets named physics_engine
+
+# Build rule for target.
+physics_engine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 physics_engine
+.PHONY : physics_engine
+
+# fast build rule for target.
+physics_engine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics_engine.dir/build.make CMakeFiles/physics_engine.dir/build
+.PHONY : physics_engine/fast
+
+#=============================================================================
+# Target rules for targets named keyboard
+
+# Build rule for target.
+keyboard: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 keyboard
+.PHONY : keyboard
+
+# fast build rule for target.
+keyboard/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/keyboard.dir/build.make CMakeFiles/keyboard.dir/build
+.PHONY : keyboard/fast
+
+#=============================================================================
+# Target rules for targets named rendering
+
+# Build rule for target.
+rendering: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rendering
+.PHONY : rendering
+
+# fast build rule for target.
+rendering/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rendering.dir/build.make CMakeFiles/rendering.dir/build
+.PHONY : rendering/fast
+
+#=============================================================================
 # Target rules for targets named SDL3-shared
 
 # Build rule for target.
@@ -194,6 +233,78 @@ SDL_uclibc: cmake_check_build_system
 SDL_uclibc/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/build.make _deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/build
 .PHONY : SDL_uclibc/fast
+
+libs/game_engine/src/keyboard.o: libs/game_engine/src/keyboard.c.o
+.PHONY : libs/game_engine/src/keyboard.o
+
+# target to build an object file
+libs/game_engine/src/keyboard.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/keyboard.dir/build.make CMakeFiles/keyboard.dir/libs/game_engine/src/keyboard.c.o
+.PHONY : libs/game_engine/src/keyboard.c.o
+
+libs/game_engine/src/keyboard.i: libs/game_engine/src/keyboard.c.i
+.PHONY : libs/game_engine/src/keyboard.i
+
+# target to preprocess a source file
+libs/game_engine/src/keyboard.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/keyboard.dir/build.make CMakeFiles/keyboard.dir/libs/game_engine/src/keyboard.c.i
+.PHONY : libs/game_engine/src/keyboard.c.i
+
+libs/game_engine/src/keyboard.s: libs/game_engine/src/keyboard.c.s
+.PHONY : libs/game_engine/src/keyboard.s
+
+# target to generate assembly for a file
+libs/game_engine/src/keyboard.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/keyboard.dir/build.make CMakeFiles/keyboard.dir/libs/game_engine/src/keyboard.c.s
+.PHONY : libs/game_engine/src/keyboard.c.s
+
+libs/game_engine/src/physics.o: libs/game_engine/src/physics.c.o
+.PHONY : libs/game_engine/src/physics.o
+
+# target to build an object file
+libs/game_engine/src/physics.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics_engine.dir/build.make CMakeFiles/physics_engine.dir/libs/game_engine/src/physics.c.o
+.PHONY : libs/game_engine/src/physics.c.o
+
+libs/game_engine/src/physics.i: libs/game_engine/src/physics.c.i
+.PHONY : libs/game_engine/src/physics.i
+
+# target to preprocess a source file
+libs/game_engine/src/physics.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics_engine.dir/build.make CMakeFiles/physics_engine.dir/libs/game_engine/src/physics.c.i
+.PHONY : libs/game_engine/src/physics.c.i
+
+libs/game_engine/src/physics.s: libs/game_engine/src/physics.c.s
+.PHONY : libs/game_engine/src/physics.s
+
+# target to generate assembly for a file
+libs/game_engine/src/physics.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/physics_engine.dir/build.make CMakeFiles/physics_engine.dir/libs/game_engine/src/physics.c.s
+.PHONY : libs/game_engine/src/physics.c.s
+
+libs/game_engine/src/rendering.o: libs/game_engine/src/rendering.c.o
+.PHONY : libs/game_engine/src/rendering.o
+
+# target to build an object file
+libs/game_engine/src/rendering.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rendering.dir/build.make CMakeFiles/rendering.dir/libs/game_engine/src/rendering.c.o
+.PHONY : libs/game_engine/src/rendering.c.o
+
+libs/game_engine/src/rendering.i: libs/game_engine/src/rendering.c.i
+.PHONY : libs/game_engine/src/rendering.i
+
+# target to preprocess a source file
+libs/game_engine/src/rendering.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rendering.dir/build.make CMakeFiles/rendering.dir/libs/game_engine/src/rendering.c.i
+.PHONY : libs/game_engine/src/rendering.c.i
+
+libs/game_engine/src/rendering.s: libs/game_engine/src/rendering.c.s
+.PHONY : libs/game_engine/src/rendering.s
+
+# target to generate assembly for a file
+libs/game_engine/src/rendering.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rendering.dir/build.make CMakeFiles/rendering.dir/libs/game_engine/src/rendering.c.s
+.PHONY : libs/game_engine/src/rendering.c.s
 
 libs/network/src/network.o: libs/network/src/network.c.o
 .PHONY : libs/network/src/network.o
@@ -279,8 +390,20 @@ help:
 	@echo "... SDL3_test"
 	@echo "... SDL_uclibc"
 	@echo "... game"
+	@echo "... keyboard"
 	@echo "... my_server"
 	@echo "... network_engine"
+	@echo "... physics_engine"
+	@echo "... rendering"
+	@echo "... libs/game_engine/src/keyboard.o"
+	@echo "... libs/game_engine/src/keyboard.i"
+	@echo "... libs/game_engine/src/keyboard.s"
+	@echo "... libs/game_engine/src/physics.o"
+	@echo "... libs/game_engine/src/physics.i"
+	@echo "... libs/game_engine/src/physics.s"
+	@echo "... libs/game_engine/src/rendering.o"
+	@echo "... libs/game_engine/src/rendering.i"
+	@echo "... libs/game_engine/src/rendering.s"
 	@echo "... libs/network/src/network.o"
 	@echo "... libs/network/src/network.i"
 	@echo "... libs/network/src/network.s"
