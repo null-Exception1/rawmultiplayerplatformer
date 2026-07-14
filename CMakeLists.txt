@@ -55,10 +55,13 @@ add_library(keyboard
 add_library(rendering
     libs/game_engine/src/rendering.c
 )
-
+add_library(arena_alloc 
+    libs/game_engine/src/arena_alloc.c
+)
 
 target_link_libraries(rendering PRIVATE SDL3::SDL3-shared SDL3_image-shared)
 target_link_libraries(keyboard PRIVATE SDL3::SDL3-shared)
+
 target_include_directories(physics_engine PUBLIC libs/game_engine/include)
 target_include_directories(keyboard PUBLIC libs/game_engine/include)
 target_include_directories(rendering PUBLIC libs/game_engine/include)
@@ -68,6 +71,6 @@ add_executable(game
 )
 target_include_directories(game PUBLIC libs/game_engine/include)
 
-target_link_libraries(game PRIVATE SDL3::SDL3-shared physics_engine network_engine keyboard rendering m)
+target_link_libraries(game PRIVATE SDL3::SDL3-shared physics_engine network_engine keyboard rendering m arena_alloc)
 
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")

@@ -8,6 +8,7 @@
 #include "SDL3/SDL_stdinc.h"
 #include "SDL3/SDL_video.h"
 #include <SDL3/SDL.h>
+#include <arena_alloc.h>
 #include <config.h>
 #include <keyboard.h>
 #include <math.h>
@@ -15,7 +16,7 @@
 #include <rendering.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <sys/mman.h>
 #define block_size 50
 typedef struct {
   float x;
@@ -40,6 +41,19 @@ int main(int argc, char *argv[]) {
   SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
   if (!init_rendering("game", 800, 600, &window, &renderer)) {
+    return 1;
+  }
+
+  size_t total_bytes = 64 * 1024 * 1024;
+  void *big_block = mmap(NULL, total_bytes, PROT_READ | PROT_WRITE,
+                         MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+
+  if (big_block == MAP_FAILED) {
+    printf("Map failed");
+  }
+
+  if (munmap(big_block, total_bytes) == -1) {
+    perror("munmap failed");
     return 1;
   }
 
@@ -130,6 +144,7 @@ int main(int argc, char *argv[]) {
     SDL_Delay(16);
   }
 
+  free(blocks);
   SDL_DestroyWindow(window);
   SDL_DestroyRenderer(renderer);
   SDL_Quit();
