@@ -22,13 +22,6 @@
   (((size) + ((alignment) - 1)) & ~((alignment) - 1))
 #define ALIGN_PAGE_UP(sz, pg) (((sz) + ((pg) - 1)) & ~((pg) - 1))
 
-#define block_size 50
-typedef struct {
-  float x;
-  float y;
-  Uint8 type;
-} Block;
-
 static bool touchedground = false;
 
 static float x = 0;
@@ -38,11 +31,10 @@ static float yvel = 0;
 static bool isrunning = true;
 static Uint8 leveldesign = 0;
 static int number_blocks = 0;
-static int lim_blocks = 10;
+static int lim_blocks = 100; // 50*9 = 450 bytes roughly
 enum { GrassBlock };
-int main(int argc, char *argv[]) {
 
-  Block *blocks = malloc(sizeof(Block) * lim_blocks);
+int main(int argc, char *argv[]) {
   SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
 
@@ -50,33 +42,30 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  size_t total_bytes = 64 * 1024 * 1024;
-  void *big_block = mmap(NULL, total_bytes, PROT_READ | PROT_WRITE,
-                         MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+  size_t total_bytes = 4096;
 
-  if (big_block == MAP_FAILED) {
-    printf("Map failed");
-  }
-
-  if (munmap(big_block, total_bytes) == -1) {
-    perror("munmap failed");
-    return 1;
-  }
   void *memory = mmap(NULL, ALIGN_PAGE_UP(4096, sysconf(_SC_PAGESIZE)),
                       PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+
   ArenaAllocator arena_allocator = arena_init(memory);
 
+  // pointers
+  // Block *blocks = malloc(sizeof(Block) * lim_blocks);
+  Block *blocks = memory; // 0th position
   SDL_Texture *leftidle = load_texture(renderer, "assets/leftidle.png");
   SDL_Texture *rightidle = load_texture(renderer, "assets/idle.png");
   SDL_Texture *rightwalk = load_texture(renderer, "assets/walkright.png");
   SDL_Texture *leftwalk = load_texture(renderer, "assets/walkleft.png");
   SDL_Texture *grass_block = load_texture(renderer, "assets/block.png");
   SDL_Texture *curr_player_texture;
+
   curr_player_texture = leftidle;
   Uint8 ticker = 0;
   Uint8 walkanim = 0;
   while (isrunning) {
     SDL_Event event;
+
+    // event loop
     while (SDL_PollEvent(&event)) {
       if (event.type == SDL_EVENT_QUIT) {
         isrunning = false;
@@ -93,28 +82,21 @@ int main(int argc, char *argv[]) {
           const double nearesty =
               floor((double)mousey / block_size) * block_size;
 
-          const Block block = {nearestx, nearesty, GrassBlock};
-          memcpy(&blocks[number_blocks], &block, sizeof block);
+          Block block = {nearestx, nearesty, GrassBlock};
+          arena_allocate((unsigned char *)&block, sizeof(block),
+                         &arena_allocator);
+
+          // memcpy(&blocks[number_blocks], &block, sizeof block);
           number_blocks++;
           if (number_blocks >= lim_blocks) {
-            lim_blocks *= 2;
-            printf("lim blocks %d\n", lim_blocks);
-            Block *temp = realloc(blocks, sizeof(Block) * lim_blocks);
-
-            if (temp != NULL) {
-              blocks = temp;
-            } else {
-              printf("Memory reallocation failed! Keeping old data.\n");
-              free(temp);
-              return 1;
-            }
+            printf("Memory reallocation failed! Keeping old data.\n");
           }
         }
       }
       const _Bool *keystate = SDL_GetKeyboardState(NULL);
 
       if ((keystate[SDL_SCANCODE_W] || keystate[SDL_SCANCODE_SPACE]) &&
-          SDL_fabsf(y - WINDOW_HEIGHT + h) < 2.0f) {
+          touchedground == true) {
         yvel = -50;
       }
       if (keystate[SDL_SCANCODE_L]) {
@@ -122,6 +104,7 @@ int main(int argc, char *argv[]) {
         printf("%d leveldesign", leveldesign);
       }
     }
+
     float mousex, mousey;
     SDL_GetMouseState(&mousex, &mousey);
 
@@ -149,6 +132,12 @@ int main(int argc, char *argv[]) {
       SDL_RenderTexture(renderer, grass_block, NULL, &dest_rect);
     }
 
+    yvel += g;
+
+    xvel *= 0.95;
+    collision_system(&x, &y, &xvel, &yvel, &touchedground, blocks,
+                     number_blocks);
+
     update_pos(&x, &y, &xvel, &yvel);
 
     boundary_condition(&x, &y, &xvel, &yvel, &touchedground);
@@ -156,7 +145,7 @@ int main(int argc, char *argv[]) {
     draw_texture(renderer, curr_player_texture, x, y);
 
     SDL_RenderPresent(renderer);
-    SDL_Delay(16);
+
     if (ticker == 10) {
 
       if (keystate[SDL_SCANCODE_D] && walkanim == 0) {
@@ -176,6 +165,8 @@ int main(int argc, char *argv[]) {
       ticker = 0;
     }
     ticker++;
+
+    SDL_Delay(16);
   }
 
   free(blocks);

@@ -61,7 +61,7 @@ add_library(arena_alloc
 
 target_link_libraries(rendering PRIVATE SDL3::SDL3-shared SDL3_image-shared)
 target_link_libraries(keyboard PRIVATE SDL3::SDL3-shared)
-
+target_link_libraries(physics_engine PRIVATE SDL3::SDL3-shared)
 target_include_directories(physics_engine PUBLIC libs/game_engine/include)
 target_include_directories(keyboard PUBLIC libs/game_engine/include)
 target_include_directories(rendering PUBLIC libs/game_engine/include)
