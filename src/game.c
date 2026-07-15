@@ -17,6 +17,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
+#include <unistd.h>
+#define ALIGN_UP(size, alignment)                                              \
+  (((size) + ((alignment) - 1)) & ~((alignment) - 1))
+#define ALIGN_PAGE_UP(sz, pg) (((sz) + ((pg) - 1)) & ~((pg) - 1))
+
 #define block_size 50
 typedef struct {
   float x;
@@ -40,6 +45,7 @@ int main(int argc, char *argv[]) {
   Block *blocks = malloc(sizeof(Block) * lim_blocks);
   SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
+
   if (!init_rendering("game", 800, 600, &window, &renderer)) {
     return 1;
   }
@@ -56,17 +62,26 @@ int main(int argc, char *argv[]) {
     perror("munmap failed");
     return 1;
   }
+  void *memory = mmap(NULL, ALIGN_PAGE_UP(4096, sysconf(_SC_PAGESIZE)),
+                      PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+  ArenaAllocator arena_allocator = arena_init(memory);
 
-  SDL_Texture *player_texture = load_texture(renderer, "assets/leftidle.png");
+  SDL_Texture *leftidle = load_texture(renderer, "assets/leftidle.png");
+  SDL_Texture *rightidle = load_texture(renderer, "assets/idle.png");
+  SDL_Texture *rightwalk = load_texture(renderer, "assets/walkright.png");
+  SDL_Texture *leftwalk = load_texture(renderer, "assets/walkleft.png");
   SDL_Texture *grass_block = load_texture(renderer, "assets/block.png");
-
+  SDL_Texture *curr_player_texture;
+  curr_player_texture = leftidle;
+  Uint8 ticker = 0;
+  Uint8 walkanim = 0;
   while (isrunning) {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
       if (event.type == SDL_EVENT_QUIT) {
         isrunning = false;
       }
-      if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+      if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN && leveldesign == 1) {
         if (event.button.button == SDL_BUTTON_LEFT) {
           printf("number_blocks %d \n", number_blocks);
           float mousex, mousey;
@@ -86,7 +101,7 @@ int main(int argc, char *argv[]) {
             printf("lim blocks %d\n", lim_blocks);
             Block *temp = realloc(blocks, sizeof(Block) * lim_blocks);
 
-            if (blocks != NULL) {
+            if (temp != NULL) {
               blocks = temp;
             } else {
               printf("Memory reallocation failed! Keeping old data.\n");
@@ -138,13 +153,37 @@ int main(int argc, char *argv[]) {
 
     boundary_condition(&x, &y, &xvel, &yvel, &touchedground);
 
-    draw_texture(renderer, player_texture, x, y);
+    draw_texture(renderer, curr_player_texture, x, y);
 
     SDL_RenderPresent(renderer);
     SDL_Delay(16);
+    if (ticker == 10) {
+
+      if (keystate[SDL_SCANCODE_D] && walkanim == 0) {
+        curr_player_texture = rightidle;
+      }
+      if (keystate[SDL_SCANCODE_A] && walkanim == 0) {
+        curr_player_texture = leftidle;
+      }
+      if (keystate[SDL_SCANCODE_D] && walkanim == 1) {
+        curr_player_texture = rightwalk;
+      }
+      if (keystate[SDL_SCANCODE_A] && walkanim == 1) {
+        curr_player_texture = leftwalk;
+      }
+
+      walkanim = walkanim ^ 1;
+      ticker = 0;
+    }
+    ticker++;
   }
 
   free(blocks);
+  SDL_DestroyTexture(leftidle);
+  SDL_DestroyTexture(rightidle);
+  SDL_DestroyTexture(rightwalk);
+  SDL_DestroyTexture(leftwalk);
+  SDL_DestroyTexture(grass_block);
   SDL_DestroyWindow(window);
   SDL_DestroyRenderer(renderer);
   SDL_Quit();

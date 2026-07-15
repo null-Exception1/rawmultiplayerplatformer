@@ -15,6 +15,7 @@ bool init_rendering(const char *title, int width, int height,
 }
 SDL_Texture *load_texture(SDL_Renderer *renderer, const char *file_path) {
   SDL_Texture *texture = IMG_LoadTexture(renderer, file_path);
+
   if (!texture) {
     SDL_Log("Failed to load texture at %s: %s", file_path, SDL_GetError());
   }
