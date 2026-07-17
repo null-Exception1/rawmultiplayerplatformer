@@ -7,12 +7,25 @@
 #define h 30
 #define w 30
 #define g 5
-#include "SDL3/SDL_stdinc.h"
+
 #define block_size 50
+
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 typedef struct {
   float x;
   float y;
-  Uint8 type;
+  unsigned char type;
 } Block;
+
+typedef enum { LEFT_IDLE, RIGHT_IDLE, LEFT_WALK, RIGHT_WALK } WALK_FRAME;
+typedef struct {
+  int id;
+  float x;
+  float y;
+  WALK_FRAME animframe;
+  int newfd;
+} Player;
 
 #endif

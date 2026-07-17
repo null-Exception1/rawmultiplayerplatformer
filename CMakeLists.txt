@@ -43,8 +43,9 @@ target_include_directories(network_engine PUBLIC libs/network/include)
 add_executable(my_server 
     src/server.c
 )
-target_link_libraries(my_server PRIVATE network_engine)
 
+target_link_libraries(my_server PRIVATE network_engine)
+target_include_directories(my_server PUBLIC libs/game_engine/include)
 # for game
 add_library(physics_engine
     libs/game_engine/src/physics.c
@@ -69,8 +70,27 @@ target_include_directories(rendering PUBLIC libs/game_engine/include)
 add_executable(game
     src/game.c
 )
+add_library(clientlib
+    libs/network/src/client.c
+)
+target_include_directories(clientlib PUBLIC libs/game_engine/include)
+target_include_directories(clientlib PUBLIC libs/network/include)
+
+
 target_include_directories(game PUBLIC libs/game_engine/include)
 
-target_link_libraries(game PRIVATE SDL3::SDL3-shared physics_engine network_engine keyboard rendering m arena_alloc)
+target_link_libraries(game PRIVATE SDL3::SDL3-shared physics_engine network_engine keyboard rendering m arena_alloc clientlib)
+
 
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+
+add_executable(my_client 
+    src/client.c
+)
+
+target_include_directories(my_client PUBLIC libs/game_engine/include)
+target_include_directories(my_client PUBLIC libs/network/include)
+
+target_link_libraries(my_client PUBLIC network_engine clientlib)
+
+

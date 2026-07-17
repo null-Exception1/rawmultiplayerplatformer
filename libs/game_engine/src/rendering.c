@@ -38,6 +38,6 @@ void draw_rect(float x, float y, SDL_Renderer *renderer) {
 }
 
 void screen_clear(SDL_Renderer *renderer) {
-  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+  SDL_SetRenderDrawColor(renderer, 30, 144, 255, 255);
   SDL_RenderClear(renderer);
 }

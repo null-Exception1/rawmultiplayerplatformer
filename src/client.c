@@ -1,4 +1,6 @@
 #include <arpa/inet.h>
+#include <client.h>
+#include <config.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <network.h>
@@ -8,34 +10,19 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
 static int yes = 1;
 
 int main(int argc, char *argv[]) {
-  struct addrinfo hints, *res, *p;
-  int sockfd;
-  int status;
-  struct sockaddr *addr;
-  socklen_t addrlength;
-  char buff[500];
+  int socketfd;
+  init(&socketfd);
+  Player playerinfo = {12, 100.0f, 100.0f, RIGHT_WALK, 1};
+  sendtoserver(socketfd, playerinfo);
 
-  memset(&hints, 0, sizeof hints);
-  hints.ai_family = AF_UNSPEC;
-  hints.ai_socktype = SOCK_STREAM;
-  status = getaddrinfo("localhost", "3490", &hints, &res);
+  while (1) {
+    Player newplayerinfo;
+    recvfromserver(socketfd, &newplayerinfo);
 
-  sockfd = find_addr_client(res, &p, &addr, &addrlength);
-
-  printf("%d\n", status);
-
-  int bytelen = recv(sockfd, buff, sizeof(buff) - 1, 0);
-
-  if (bytelen < 0) {
-    perror("recv");
-  } else if (bytelen == 0) {
-    printf("Connection closed by peer.\n");
-  } else {
-    buff[bytelen] = '\0';
-    printf("Received string: %s\nBytes received: %d\n", buff, bytelen);
+    printf("player info : %d %f %f %d %d \n", playerinfo.id, playerinfo.x,
+           playerinfo.y, playerinfo.animframe, playerinfo.newfd);
   }
 }
