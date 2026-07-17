@@ -39,6 +39,39 @@ enum { GrassBlock };
 static int socketfd = -1;
 static Player *players = NULL;
 
+void generate_cool_map(Block *blocks, int *number_blocks, int lim_blocks,
+                       ArenaAllocator *arena) {
+#define PLACE_BLOCK(grid_x, grid_y)                                            \
+  if (*number_blocks < lim_blocks) {                                           \
+    Block b = {(float)(grid_x * block_size), (float)(grid_y * block_size),     \
+               GrassBlock};                                                    \
+    arena_allocate((unsigned char *)&b, sizeof(Block), arena);                 \
+    (*number_blocks)++;                                                        \
+  }
+
+  for (int x = 0; x < 16; x++) {
+    PLACE_BLOCK(x, 11);
+  }
+
+  for (int x = 5; x <= 10; x++) {
+    PLACE_BLOCK(x, 7);
+  }
+
+  PLACE_BLOCK(0, 9);
+  PLACE_BLOCK(1, 9);
+  PLACE_BLOCK(0, 8);
+
+  PLACE_BLOCK(15, 9);
+  PLACE_BLOCK(14, 9);
+  PLACE_BLOCK(15, 6);
+  PLACE_BLOCK(14, 6);
+
+  PLACE_BLOCK(7, 4);
+  PLACE_BLOCK(8, 4);
+
+#undef PLACE_BLOCK
+}
+
 void *network_listener_thread(void *arg) {
   int sock = *(int *)arg;
   Player incoming_player;
@@ -50,7 +83,7 @@ void *network_listener_thread(void *arg) {
     if (bytes_received > 0 && players != NULL) {
       bool found = false;
 
-      // Update existing remote player details
+      // update existing remote player details
       for (int i = 0; i < num_players; i++) {
         if (players[i].id == incoming_player.id) {
           players[i] = incoming_player;
@@ -96,6 +129,8 @@ int main(int argc, char *argv[]) {
   Block *blocks = (Block *)memory;
   players = (Player *)((unsigned char *)memory + (sizeof(Block) * lim_blocks));
 
+  generate_cool_map(blocks, &number_blocks, lim_blocks, &arena_allocator);
+
   int id;
   char buf[10];
   printf("ID PLEASE : ");
@@ -109,8 +144,6 @@ int main(int argc, char *argv[]) {
 
   sendtoserver(socketfd, you);
 
-  // FIX: Spawn background network worker only AFTER memory layout pointers are
-  // safe
   pthread_t network_thread;
   if (socketfd != -1) {
     pthread_create(&network_thread, NULL, network_listener_thread, &socketfd);
